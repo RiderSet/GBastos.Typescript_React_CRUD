@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\GBastos.CRUD_React_API.props" />
+</Project>
