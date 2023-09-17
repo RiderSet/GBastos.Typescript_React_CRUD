@@ -1,12 +1,12 @@
 {
   "name": "todo-react-redux",
   "author": {
-    "name": "Paulo Vitor Nascimento",
-    "email": "nascimento.paulo.vitor@gmail.com",
-    "url": "https://github.com/linhous/"
+    "name": "Gil Antonio Bastos",
+    "email": "glbsts@gmail.com",
+    "url": "https://github.com/RiderSet/GBastos.Typescript_React_CRUD/"
   },
-  "homepage": "https://foxtag.com.br",
-  "description": "Um projeto simples de Todo List com React/Redux",
+  "homepage": "https://gbastos.com.br",
+  "description": "Um projeto simples listagem de categorias",
   "license": "MIT",
   "version": "1.0.0",
   "private": true,
