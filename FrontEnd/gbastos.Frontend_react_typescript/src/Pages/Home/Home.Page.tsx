@@ -1,6 +1,7 @@
 import "./Home.scss";
 
 const Home = () => {
+   
    return (
       <div className="content home">
          <h3>Bemvindo ao APP de Categorias</h3>
