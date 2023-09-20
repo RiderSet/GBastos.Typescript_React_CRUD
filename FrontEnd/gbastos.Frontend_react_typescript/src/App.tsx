@@ -1,35 +1,23 @@
-import { useContext, lazy, Suspense } from "react";
-import Navbar from "./components/NavBar/navbar.components";
-import { ThemeContext } from "./Context/ThemeContext";
-import { Routes, Route } from "react-router-dom";
-import CustomLinearProgress from "./components/CustomLinear.progress/CustomLinear.components";
+import "bootstrap/dist/css/bootstrap.min.css";
+import logo from './assets/logo.png'
+import './App.css'
 
-// Imports with Lazy loading
-const Home = lazy(() => import("./Pages/Home/Home.Page"));
-const Companies = lazy(() => import("./Pages/Categories/Categories"));
-const AddCompany = lazy(() => import("./Pages/Categories/AddCategories"));
+function App() {
 
-const App = () => {
-   const { darkMode } = useContext(ThemeContext);
-
-   const appStyles = darkMode ? "app dark" : "app";
-
-   return (
-      <div className={appStyles}>
-         <Navbar />
-         <div className="wrapper">
-            <Suspense fallback={<CustomLinearProgress />}>
-               <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/companies">
-                     <Route index element={<Companies />} />
-                     <Route path="add" element={<AddCompany />} />
-                  </Route>
-               </Routes>
-            </Suspense>
-         </div>
+  return (
+    <>
+      <div>
+        <button className="jumbotron" ><img src={logo} className="logo" alt="Vite logo" /></button>
       </div>
-   );
-};
+      <h3>Categories Management</h3>
+      <p><code>Isto é uma avaliação</code></p>
+      <div>
+      </div>
+      <p className="read-the-docs">
+        Click on the Killwangy logo to see the Categories Management
+      </p>
+    </>
+  )
+}
 
 export default App;

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Geral\\GBastos Systems\\Clientes\\K7 Consult\\Prova\\GBastos\\BackEnd\\GBastos.API_DotNet_CRUD\\GBastos.CRUD_React_API.csproj": {}
+    "C:\\Geral\\GBastos Systems\\Clientes\\K7 Consult\\Avaliação\\GBastos.Typescript_React_CRUD\\BackEnd\\GBastos.Backend_API_DotNet\\GBastos.CRUD_React_API.csproj": {}
   },
   "projects": {
-    "C:\\Geral\\GBastos Systems\\Clientes\\K7 Consult\\Prova\\GBastos\\BackEnd\\GBastos.API_DotNet_CRUD\\GBastos.CRUD_React_API.csproj": {
+    "C:\\Geral\\GBastos Systems\\Clientes\\K7 Consult\\Avaliação\\GBastos.Typescript_React_CRUD\\BackEnd\\GBastos.Backend_API_DotNet\\GBastos.CRUD_React_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Geral\\GBastos Systems\\Clientes\\K7 Consult\\Prova\\GBastos\\BackEnd\\GBastos.API_DotNet_CRUD\\GBastos.CRUD_React_API.csproj",
+        "projectUniqueName": "C:\\Geral\\GBastos Systems\\Clientes\\K7 Consult\\Avaliação\\GBastos.Typescript_React_CRUD\\BackEnd\\GBastos.Backend_API_DotNet\\GBastos.CRUD_React_API.csproj",
         "projectName": "GBastos.CRUD_React_API",
-        "projectPath": "C:\\Geral\\GBastos Systems\\Clientes\\K7 Consult\\Prova\\GBastos\\BackEnd\\GBastos.API_DotNet_CRUD\\GBastos.CRUD_React_API.csproj",
+        "projectPath": "C:\\Geral\\GBastos Systems\\Clientes\\K7 Consult\\Avaliação\\GBastos.Typescript_React_CRUD\\BackEnd\\GBastos.Backend_API_DotNet\\GBastos.CRUD_React_API.csproj",
         "packagesPath": "C:\\Users\\glbst\\.nuget\\packages\\",
-        "outputPath": "C:\\Geral\\GBastos Systems\\Clientes\\K7 Consult\\Prova\\GBastos\\BackEnd\\GBastos.API_DotNet_CRUD\\obj\\",
+        "outputPath": "C:\\Geral\\GBastos Systems\\Clientes\\K7 Consult\\Avaliação\\GBastos.Typescript_React_CRUD\\BackEnd\\GBastos.Backend_API_DotNet\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

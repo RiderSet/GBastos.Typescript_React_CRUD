@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "y+o1Zc92eMvUEmqYfScP7+z7bCZmNYnFo/kbQJZpsO+5fSrIgIf4efrVdckkfme6nmyJIEtr10J2d9Y7gpneTg==",
+  "dgSpecHash": "S7/u6MKY/0JKUYVeBR7JNsQjgOhX5KhhHvZm+qSoMob6JKWKIYIl55s6dHz9an9tWBSv0KdSJaJPsABXcRHWqg==",
   "success": true,
-  "projectFilePath": "C:\\Geral\\GBastos Systems\\Clientes\\K7 Consult\\Prova\\GBastos\\BackEnd\\GBastos.API_DotNet_CRUD\\GBastos.CRUD_React_API.csproj",
+  "projectFilePath": "C:\\Geral\\GBastos Systems\\Clientes\\K7 Consult\\Avaliação\\GBastos.Typescript_React_CRUD\\BackEnd\\GBastos.Backend_API_DotNet\\GBastos.CRUD_React_API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\glbst\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\glbst\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

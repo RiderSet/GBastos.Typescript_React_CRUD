@@ -1,19 +1,27 @@
-# Categories React TS Redux
- Lista ede categorias simples utilizando algumas das tecnologias mais recentes!
- <p align="center">
-  <a src="#" target="_blank"><img src="./src/images/logo.png" width="100%" height="auto" /></a>
-</p>
- 
-## 👊🏻 Agradecimentos antes de começar...
-Este projeto foi baseado em outros 3. A verfifcar:
-+ https://github.com/raminhuk/react-todo-list
-+ https://github.com/abdulsamadayoade/redux-todo
-+ https://github.com/linhous/todo-ts-redux.git
+# React + TypeScript + Vite
 
-Utilizando a estrutura REDUX do projeto **redux-todo** e toda parte de layout e estrutura REACT do projeto **react-todo-list**, eu apenas fiz a conversão dos projetos para Typescript coma  ajuda do Vite e unifiquei juntando ambos em um só.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## ❓ Intuito do projeto
-Foi uma avaliação da qual que participei.
+Currently, two official plugins are available:
 
-## ⚠️ Aviso
-No console do DevTools, o projeto apresenta uma mensagem de incompatibilida com o recurso React.render na versão 18 do React, o problema é causado pelo **Toast** do Chakra UI e os desenvolvedores do framework já estão sabendo do ocorrido.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+
+- Configure the top-level `parserOptions` property like this:
+
+```js
+   parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname,
+   },
+```
+
+- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
