@@ -23,10 +23,10 @@ namespace GBastos.CRUD_React_API.Models
         }
 
         [HttpGet]
-        [Route("GetByGuid/{id:guid}")]
-        public async Task<IActionResult> GetByGuid([FromRoute] Guid id)
+        [Route("GetByGuid/{guid}")]
+        public async Task<IActionResult> GetByGud([FromRoute] Guid guid)
         {
-            var category = await dbContext.Categories.FindAsync(id);
+            var category = await dbContext.Categories.FindAsync(guid);
 
             if (category == null)
             {
