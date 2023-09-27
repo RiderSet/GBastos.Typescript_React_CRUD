@@ -1,11 +1,7 @@
-export const baseUrl = "http://localhost:5238/api/";
-
-/*
 import axios from "axios";
 
-const client = axios.create({
+const httpModule = axios.create({
   baseURL: "http://localhost:5238/api/"
 })
 
-export default client;
-*/
+export default httpModule;

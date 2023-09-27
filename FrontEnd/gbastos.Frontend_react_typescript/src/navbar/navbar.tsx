@@ -1,30 +1,24 @@
+//import Menu from "@mui/material/Menu";
 import { Link } from "react-router-dom";
-import Menu from "@mui/material/Menu";
 import "./navbar.scss";
+import { Menu } from "@mui/icons-material";
 
-const Navbar: React.FC = () => {
+const NavBar: React.FC = () => {
   return (
     <div className="navbar">
-      <div className="brand">Gerenciamento de Categorias</div>
-      <div className="hamburguer">
-        <Menu open={false} />
-      </div>
+    <div className="hamburguer"><Menu /></div>
+      <div className="brand"><Link to="/">GBastos</Link></div>
       <div className="menu">
         <ul>
+          <li>
+          </li>
+          <li>
+          </li>
           <li>
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/App">Categorias</Link>
-          </li>
-          <li>
-            <Link to="/addCategory">Adicionar Nova</Link>
-          </li>
-          <li>
-            <Link to="/updateCategory">Atualizar</Link>
-          </li>
-          <li>
-            <Link to="/deleteCategory">Excluir</Link>
+            <Link to="/createCategory">Adicionar Nova</Link>
           </li>
         </ul>
       </div>
@@ -32,4 +26,4 @@ const Navbar: React.FC = () => {
   );
 };
 
-export default Navbar;
+export default NavBar;

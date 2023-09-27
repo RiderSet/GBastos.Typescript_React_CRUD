@@ -54,7 +54,8 @@ namespace GBastos.CRUD_React_API.Models
         [Route("AddCategory")]
         public async Task<IActionResult> AddCategory(AddCategoryRequest addCategoryRequest)
         {
-            var category = new Category() {
+            var category = new Category()
+            {
                 Id = new Guid(),
                 Nome = addCategoryRequest.Nome
             };
@@ -78,7 +79,7 @@ namespace GBastos.CRUD_React_API.Models
                 return Ok(category);
             }
 
-            return NotFound();  
+            return NotFound();
         }
 
         [HttpDelete]

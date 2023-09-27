@@ -1,7 +1,11 @@
 export interface ICategory {
-    Guid: string;
+    Id: string;
     Name: string;
  }
+ 
+ export interface ICategoryDTO {
+   Name: string;
+}
 
  export interface ICategories {
     categories: ICategory[];
