@@ -24,7 +24,7 @@ namespace GBastos.CRUD_React_API.Models
 
         [HttpGet]
         [Route("GetByGuid/{guid}")]
-        public async Task<IActionResult> GetByGud([FromRoute] Guid guid)
+        public async Task<IActionResult> GetByGuid([FromRoute] Guid guid)
         {
             var category = await dbContext.Categories.FindAsync(guid);
 
@@ -67,7 +67,7 @@ namespace GBastos.CRUD_React_API.Models
         }
 
         [HttpPut]
-        [Route("UpdateCategory/{id:guid}")]
+        [Route("UpdateCategory/{guid}")]
         public async Task<IActionResult> UpdateCategory([FromRoute] Guid id, UpdateContactRequest updateContactRequest)
         {
             var category = await dbContext.Categories.FindAsync(id);
@@ -83,10 +83,10 @@ namespace GBastos.CRUD_React_API.Models
         }
 
         [HttpDelete]
-        [Route("DeleteCategory/{id:guid}")]
-        public async Task<IActionResult> DeleteCategory([FromRoute] Guid id)
+        [Route("DeleteCategory/{guid}")]
+        public async Task<IActionResult> DeleteCategory([FromRoute] Guid guid)
         {
-            var category = await dbContext.Categories.FindAsync(id);
+            var category = await dbContext.Categories.FindAsync(guid);
 
             if (category != null)
             {

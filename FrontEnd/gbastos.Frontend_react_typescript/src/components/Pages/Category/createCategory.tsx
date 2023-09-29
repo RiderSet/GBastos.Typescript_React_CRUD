@@ -1,47 +1,25 @@
-import { useEffect, useState } from "react";
-import { redirect, useNavigate } from "react-router-dom";
-import { ICategory, ICategoryDTO } from "../interfaces/ICategory";
+import { useState } from "react";
+import { ICategoryDTO } from "../interfaces/ICategory";
+import TextField from "@mui/material/TextField/TextField";
+import Button from "@mui/material/Button/Button";
+import { useNavigate } from "react-router-dom";
 import httpModule from "../../../api/client";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import { Button, TextField } from "@mui/material";
 import "../../Styles/categories.scss";
 
-export const CreateCategory = () => {
+const CreateCategory = () => {
+   const [categoriesDTO, setCategoriesDTO] = useState<ICategoryDTO>({
+      Nome: "",
+   });
 
-    const [category, setCategory] = useState<ICategoryDTO>({
-        Name: ""
-      });
-      const [categories, setCategories] = useState<ICategory[]>([]);
-      const Redirect = useNavigate();
+   const redirect = useNavigate();
 
-      useEffect(() => {
-        httpModule
-           .get<ICategory[]>("GetCategories")
-           .then((response) => {
-            setCategories(response.data);
-           })
-           .catch((error) => {
-              alert("Error");
-              console.log(error);
-           });
-     }, []);
-
-      const handleClickSaveBtn = () => {
-        if (category.Name === ""){
-          alert("Preencha o campo Nome");
-          return;
-        }
-        httpModule
-        .post(httpModule + "AddCategory", category)
-        .then(() => Redirect("/categoriesList"))
-        .catch(error=>console.log(error))      
-      const newCategoryFormData = new FormData();
-      newCategoryFormData.append("Name", category.Name);
+   const handleClickSaveBtn = () => {
+      if ( categoriesDTO.Nome === "" ) {
+         alert("Preencha o campo");
+         return;
+      }
       httpModule
-         .post("AddCategory", newCategoryFormData)
+         .post("AddCategory", categoriesDTO)
          .then(() => redirect("/categoriesList"))
          .catch((error) => console.log(error));
    };
@@ -52,40 +30,29 @@ export const CreateCategory = () => {
 
    return (
       <div className="content">
-         <div className="add-category">
-            <h2>Adicionar nova Categoria</h2>
-            <FormControl fullWidth>
-               <InputLabel>Categoria</InputLabel>
-               <Select
-                  value={category.Name}
-                  label="Category"
-                  onChange={(e) => setCategory({ ...category, Name: e.target.value })}
-               >
-                  {categories.map((item) => (
-                     <MenuItem key={item.Id} value={item.Name}>
-                        {item.Name}
-                     </MenuItem>
-                  ))}
-               </Select>
-            </FormControl>
-
+         <div className="add-job">
+            <h2>Adicionar nova categoria</h2>
             <TextField
                autoComplete="off"
-               label="Name"
+               label="Nome da Categoria"
                variant="outlined"
-               value={category.Name}
-               onChange={(e) => setCategory({ ...category, Name: e.target.value })}
+               value={categoriesDTO.Nome}
+               onChange={(e) => setCategoriesDTO({ ...categoriesDTO, Nome: e.target.value })}
             />
-            
+
             <div className="btns">
+
                <Button variant="outlined" color="primary" onClick={handleClickSaveBtn}>
                   Save
                </Button>
                <Button variant="outlined" color="secondary" onClick={handleClickBackBtn}>
-                  Back
+                  Voltar
                </Button>
+
             </div>
          </div>
       </div>
    );
 };
+
+export default CreateCategory;

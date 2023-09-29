@@ -1,10 +1,11 @@
-import { Box, Link } from "@mui/material";
+import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { GridColDef } from "@mui/x-data-grid/models";
 import { ICategory } from '../interfaces/ICategory';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import './categoryGrid.scss';
+import { Link } from "react-router-dom";
 
 const column: GridColDef[] = [
    { field: "id", headerName: "Guid", width: 350 },
@@ -14,7 +15,7 @@ const column: GridColDef[] = [
       headerName: "Download",
       width: 90,
       renderCell: () => (
-         <Link href="/src/components/Pages/Category/updateCategory.tsx" >
+         <Link to="/updateCategory" >
                 <EditIcon />
          </Link>
       ),
@@ -24,7 +25,7 @@ const column: GridColDef[] = [
       headerName: "Download",
       width: 90,
       renderCell: () => (
-         <Link href="/src/components/Pages/Category/deleteCategory.tsx" >
+         <Link to="/deleteCategory" >
                 <DeleteIcon />
          </Link>
       ),

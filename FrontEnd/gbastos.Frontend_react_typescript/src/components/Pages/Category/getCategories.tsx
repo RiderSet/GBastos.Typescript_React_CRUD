@@ -39,7 +39,7 @@ export const GetCategories = () => {
                return (
 
                    <tr>
-                       <td>{item.Guid}</td> 
+                       <td>{item.Id}</td> 
                        <td>{item.Name}</td>
                        <td>{}
                         

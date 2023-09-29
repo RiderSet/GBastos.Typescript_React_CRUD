@@ -14,7 +14,7 @@ export const DeleteCategory = () => {
     const isSuccess = await deleteCategory(guid);
     if (isSuccess)
       setCategories((prev) =>
-        prev.filter((category) => category.Guid !== guid)
+        prev.filter((category) => category.Id !== guid)
       );
   };
 
@@ -26,11 +26,11 @@ export const DeleteCategory = () => {
         {categories.map((category) => (
           <div
             className="card"
-            key={category.Guid}
-            onClick={() => handleDelete(category.Guid)}
+            key={category.Id}
+            onClick={() => handleDelete(category.Id)}
           >
             <p>
-              Guid: <span>{category.Guid}</span>
+              Guid: <span>{category.Id}</span>
             </p>
             <p>
               Name: <span>{category.Name}</span>
