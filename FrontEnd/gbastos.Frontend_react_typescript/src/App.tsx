@@ -1,31 +1,33 @@
-import React from 'react';
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Link } from "react-router-dom";
-import logo from "./assets/logo.png";
-import "./App.scss";
-import NavBar from './navbar/navbar';
+import { useContext, lazy, Suspense } from "react";
+import { ThemeContext } from "../src/context/themeContext";
+import { Routes, Route } from "react-router-dom";
+import CustomLinearProgress from "../src/components/customLinearLoader/linearLoader";
+import AddCategory from "./pages/categories/AddCategory";
+import EditCategory from "./pages/categories/EditCategory";
+import DeleteCategory from "./pages/categories/deleteCategory";
 
-const App: React.FC = () => {
+const Home = lazy(() => import("../src/pages/home/homePage"));
+const CategoriesList = lazy(() => import("./pages/categories/categories"));
+
+const App = () => {
+  const { darkMode } = useContext(ThemeContext);
+  const appStyles = darkMode ? "app dark" : "app";
+
   return (
-    <>
-    <div>
-      <NavBar />
-      <div className="home" >
-        <Link to="/CategoriesList" className="navbar-brand" >
-          <img src={logo} className="logo" alt="Vite logo" />
-        </Link>
+    <div className={appStyles}>
+      <div className="wrapper">
+        <Suspense fallback={<CustomLinearProgress />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/list" element={<CategoriesList />} />
+            <Route path="/add" element={<AddCategory />} />
+            <Route path="/edit" element={<EditCategory />} />
+            <Route path="/delete" element={<DeleteCategory />} />
+          </Routes>
+        </Suspense>
       </div>
-      <h3>Categories Management</h3>
-      <p>
-        <code>Isto é uma avaliação</code>
-      </p>
-      <div>
-        <Link to="/CategoriesList">Categorias</Link>
-      </div>
-      <p className="read-the-docs">You can also click on the Killwangy logo</p>
     </div>
-  </>
-  )
-}
+  );
+};
 
 export default App;
