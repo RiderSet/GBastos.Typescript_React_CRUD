@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import CategoriesGrid from "../../components/categories/categoriesGrid";
 import { ICategory } from "../../Interfaces/ICategory";
 import  httpModule  from "../../crosscutting/api/client";
+import NavBar from "../../components/navbar/navBar";
 
 const Categories = () => {
    const [categories, setCategories] = useState<ICategory[]>([]);
@@ -29,6 +30,7 @@ const Categories = () => {
 
    return (
       <div className="content categories">
+      <NavBar />
          <div className="heading">
             <h2>Categorias</h2>
             <Button variant="outlined" onClick={() => redirect("/add")}>

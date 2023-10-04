@@ -1,7 +1,7 @@
 import reactLogo from "../../assets/react.svg";
 import logo from "../..//assets/logo.png";
-import "./homePage.scss";
 import { Link } from "react-router-dom";
+import "./homePage.scss";
 
 const Home = () => {
   return (
@@ -20,8 +20,7 @@ const Home = () => {
         <p>Isto é uma avaliação</p><br />
       <div>
         <p className="read-the-docs">
-          Clique no logo <code>Killwangy</code> para ir para a
-          página inicial
+          Clique no logo <code>Killwangy</code> para ir para a página inicial
         </p>
       </div>
       </div>

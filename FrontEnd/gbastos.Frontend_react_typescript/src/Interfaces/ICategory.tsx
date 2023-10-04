@@ -1,6 +1,6 @@
 export interface ICategory {
     Guid: string;
-    Name: string;
+    Nome: string;
  }
 
  export interface ICategories {
@@ -8,7 +8,7 @@ export interface ICategory {
   }
 
   export interface ICreateCategoryDto {
-     Name: string;
+     Nome: string;
   }
 
   export interface ICategoriesGridProps {

@@ -1,30 +1,22 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./category.scss";
-import { ICreateCategoryDto } from "../../Interfaces/ICategory";
 import {} from "@mui/material";
 import TextField from "@mui/material/TextField/TextField";
 import Button from "@mui/material/Button/Button";
-import { useNavigate } from "react-router-dom";
 import httpModule from "../../crosscutting/api/client";
 
 const AddCategory = () => {
-   const [category, setCategory] = useState<ICreateCategoryDto>({ Name: "" });
+   const [category, setCategory] = useState({ Nome: "" });
    const redirect = useNavigate();
 
-   const handleClickSaveBtn = () => {
-      if (category.Name === "" ) {
-         alert("Preencha o campo nome");
-         return;
-      }
+   const addCategoryHandler = () => {
       httpModule
-         .post("AddCatgory", category)
-         .then(() => redirect("/list"))
-         .catch((error) => console.log(error));
-   };
-
-   const handleClickBackBtn = () => {
-      redirect("/list");
-   };
+      .post("AddCategory", category)
+      .then(res => {         
+         redirect("/list")
+      })
+   }
 
    return (
       <div className="content">
@@ -34,11 +26,11 @@ const AddCategory = () => {
                autoComplete="off"
                label="Category Name"
                variant="outlined"
-               value={category.Name}
-               onChange={(e) => setCategory({ ...category, Name: e.target.value })}
+               value={category.Nome}
+               onChange={(e) => setCategory({ ...category, Nome: e.target.value })}
             />
             <div className="btns">
-               <Button variant="outlined" color="primary" onClick={handleClickSaveBtn}>
+               <Button variant="outlined" color="primary" onClick={addCategoryHandler}>
                   Save
                </Button>
                <Button variant="outlined" color="secondary" onClick={handleClickBackBtn}>

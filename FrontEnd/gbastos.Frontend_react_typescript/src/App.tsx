@@ -3,11 +3,11 @@ import { ThemeContext } from "../src/context/themeContext";
 import { Routes, Route } from "react-router-dom";
 import CustomLinearProgress from "../src/components/customLinearLoader/linearLoader";
 import AddCategory from "./pages/categories/AddCategory";
-import EditCategory from "./pages/categories/EditCategory";
+import EditCategory from "./pages/categories/editCategory";
 import DeleteCategory from "./pages/categories/deleteCategory";
 
 const Home = lazy(() => import("../src/pages/home/homePage"));
-const CategoriesList = lazy(() => import("./pages/categories/categories"));
+const CategoriesList = lazy(() => import("./pages/categories/categoriesList"));
 
 const App = () => {
   const { darkMode } = useContext(ThemeContext);
@@ -20,7 +20,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/list" element={<CategoriesList />} />
-            <Route path="/add" element={<AddCategory />} />
+            <Route path="/add" element={<AddCategory />}  />
             <Route path="/edit" element={<EditCategory />} />
             <Route path="/delete" element={<DeleteCategory />} />
           </Routes>
