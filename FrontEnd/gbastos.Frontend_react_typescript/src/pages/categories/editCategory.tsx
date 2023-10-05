@@ -1,73 +1,66 @@
-
-import { useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { FormEvent, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import "./category.scss";
+import {} from "@mui/material";
+import TextField from "@mui/material/TextField/TextField";
+import Button from "@mui/material/Button/Button";
 import httpModule from "../../crosscutting/api/client";
-import { Button, TextField } from "@mui/material";
-import { ICreateCategoryDto } from "../../Interfaces/ICategory";
+import { ICategory } from "../../Interfaces/ICategory";
 
-function EditCategory() {   
-  const location = useLocation();
-  const state = location.state;
-  //const { id } = useParams();
-
+const EditCategory = () => {
   const redirect = useNavigate();
-  const [categoryDTO, setCategoryDTO] = useState<ICreateCategoryDto>({
-  Nome: state.Nome
-});
-  const [category, setCategory] = useState({
-  Guid: state.Guid,
-  Nome: state.Nome
-});
+  const { id } = useParams();
+  const [category, setCategory] = useState<ICategory>([]);
 
+  useEffect(() => {
+    httpModule
+    .get("GetByGuid/" + id)
+    .then(res => setCategory(res.data))
+    .catch(err => console.log(err))
+  }, [])
 
-useEffect(() => {
-  httpModule.get("GetByGuid/" + category.Guid)
-  .then(res => setCategory(res.data))
-  .catch(err => console.log(err))
-})
+   const editCategoryHandler = () => {
+      httpModule
+      .put("UpdateCategory/" + id, category)
+      .then(res => {         
+         redirect("/list")
+      })
+   }
 
-const upDateCategory = (event) => {
-  event.preventDefault();
-  httpModule
-  .post("UpdateCategory/" + category.Guid, categoryDTO)
-  .then(res => {
-    redirect("/list");
-  })
-}
+   const handleClickBackBtn = () => {
+       redirect("/list");
+   }
 
-const handleClickBackBtn = () => {
-    redirect("/list");
-}
+  function handleSubmit(event: FormEvent<HTMLFormElement>): void {
+    event.preventDefault();
+    httpModule
+    .put("UpdateCategory", category.Guid)
+  }
 
-  return (
-    <div className="content">
-    <div className="add-category">
-       <h2>Excluir Categoria</h2>
-       <TextField
-          autoComplete="off"
-          label="Category Guid"
-          variant="outlined"
-          value={category.Guid}
-          onChange={(e) => setCategory({ ...category, Guid: e.target.value })}
-       />
-       <TextField
-          autoComplete="off"
-          label="Category Nome"
-          variant="outlined"
-          value={categoryDTO.Nome}
-          onChange={(e) => setCategoryDTO({ ...categoryDTO, Nome: e.target.value })}
-       />
-       <div className="btns">
-          <Button variant="outlined" color="primary" onClick={upDateCategory}>
-             UpDate
-          </Button>
-          <Button variant="outlined" color="secondary" onClick={handleClickBackBtn}>
-             Back
-          </Button>
-       </div>
-    </div>
- </div>
-  )
-}
+   return (
+      <div className="content">
+      <form onSubmit={handleSubmit}>
+         <div className="add-category">
+            <h2>Editar Categoria</h2>
+            <TextField
+               autoComplete="off"
+               label="Nome da Castegoria"  
+               variant="outlined"
+               value={category.Nome}
+               onChange={(e) => setCategory({ ...category, Nome: e.target.value })}
+            />
+            <div className="btns">
+               <Button variant="outlined" color="primary" onClick={editCategoryHandler}>
+                  Edit
+               </Button>
+               <Button variant="outlined" color="secondary" onClick={handleClickBackBtn}>
+                  Back
+               </Button>
+            </div>
+         </div>
+         </form>
+      </div>
+   );
+};
 
-export default EditCategory
+export default EditCategory;

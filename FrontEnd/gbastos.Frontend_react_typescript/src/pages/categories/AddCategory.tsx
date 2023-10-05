@@ -13,7 +13,7 @@ const AddCategory = () => {
    const addCategoryHandler = () => {
       httpModule
       .post("AddCategory", category)
-      .then(res => {         
+      .then(res => {
          redirect("/list")
       })
    }
