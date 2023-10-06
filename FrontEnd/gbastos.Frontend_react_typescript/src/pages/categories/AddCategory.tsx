@@ -33,7 +33,7 @@ const AddCategory = () => {
                <Button variant="outlined" color="primary" onClick={addCategoryHandler}>
                   Save
                </Button>
-               <Button variant="outlined" color="secondary" onClick={handleClickBackBtn}>
+               <Button variant="outlined" color="secondary" >
                   Back
                </Button>
             </div>

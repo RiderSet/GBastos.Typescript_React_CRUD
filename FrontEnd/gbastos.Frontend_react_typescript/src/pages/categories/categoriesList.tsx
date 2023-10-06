@@ -1,17 +1,14 @@
 import { useEffect, useState } from "react";
-import "./category.scss";
-import { Button, CircularProgress } from "@mui/material";
-import { Add } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+import { CircularProgress } from "@mui/material";
 import CategoriesGrid from "../../components/categories/categoriesGrid";
 import { ICategory } from "../../Interfaces/ICategory";
 import  httpModule  from "../../crosscutting/api/client";
 import NavBar from "../../components/navbar/navBar";
+import "./category.scss";
 
 const Categories = () => {
    const [categories, setCategories] = useState<ICategory[]>([]);
    const [loading, setLoading] = useState<boolean>(false);
-   const redirect = useNavigate();
 
    useEffect(() => {
       setLoading(true);
@@ -32,10 +29,7 @@ const Categories = () => {
       <div className="content categories">
       <NavBar />
          <div className="heading">
-            <h2>Categorias</h2>
-            <Button variant="outlined" onClick={() => redirect("/add")}>
-               <Add />
-            </Button>
+            <h2 className="h2">Lista de Categorias</h2>
          </div>
          {loading ? (
             <CircularProgress size={100} />
