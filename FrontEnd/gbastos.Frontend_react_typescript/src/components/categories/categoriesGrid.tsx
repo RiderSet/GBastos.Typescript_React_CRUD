@@ -26,7 +26,6 @@ export default function CategoriesGrid( {data}: ICategory[]) {
         tableData[row.index] = values;        
         setTableData([...tableData]);
         exitEditingMode(); 
-        window.location.reload();
       }
     };
   
