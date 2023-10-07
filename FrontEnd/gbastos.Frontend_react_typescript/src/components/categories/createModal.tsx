@@ -11,7 +11,7 @@ export const CreateNewCategoryModal = ({ open, columns, onClose, onSubmit }) => 
         return acc;
       }, {}),
     );
-  
+
     const handleSubmit = () => {
       httpModule
       .post("AddCategory", category)
@@ -19,7 +19,7 @@ export const CreateNewCategoryModal = ({ open, columns, onClose, onSubmit }) => 
       window.location.reload();
       onClose();
     };
-  
+
     return (
       <Dialog open={open}>
         <DialogTitle textAlign="center">NOVA CATEGORIA</DialogTitle>
