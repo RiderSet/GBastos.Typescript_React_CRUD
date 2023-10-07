@@ -1,7 +1,10 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Stack, TextField } from "@mui/material";
 import { useState } from "react";
+import httpModule from "../../crosscutting/api/client";
+import { ICreateCategoryDto } from "../../Interfaces/ICategory";
 
-export const CreateNewAccountModal = ({ open, columns, onClose, onSubmit }) => {
+export const CreateNewCategoryModal = ({ open, columns, onClose, onSubmit }) => {
+    const [category, setCategory] = useState<ICreateCategoryDto>();
     const [values, setValues] = useState(() =>
       columns.reduce((acc, column) => {
         acc[column.accessorKey ?? ''] = '';
@@ -10,8 +13,10 @@ export const CreateNewAccountModal = ({ open, columns, onClose, onSubmit }) => {
     );
   
     const handleSubmit = () => {
-      //put your validation logic here
+      httpModule
+      .post("AddCategory", category)
       onSubmit(values);
+      window.location.reload();
       onClose();
     };
   
@@ -33,7 +38,7 @@ export const CreateNewAccountModal = ({ open, columns, onClose, onSubmit }) => {
                   label={column.header}
                   name={column.accessorKey}
                   onChange={(e) =>
-                    setValues({ ...values, [e.target.name]: e.target.value })
+                    setCategory({ ...values, [e.target.name]: e.target.value })
                   }
                 />
               ))}
@@ -42,9 +47,7 @@ export const CreateNewAccountModal = ({ open, columns, onClose, onSubmit }) => {
         </DialogContent>
         <DialogActions sx={{ p: '1.25rem' }}>
           <Button onClick={onClose}>Cancel</Button>
-          <Button color="secondary" onClick={handleSubmit} variant="contained">
-          NOVA CATEGORIA
-          </Button>
+          <Button color="secondary"  onClick={handleSubmit} variant="contained">CRIAR</Button>
         </DialogActions>
       </Dialog>
     );

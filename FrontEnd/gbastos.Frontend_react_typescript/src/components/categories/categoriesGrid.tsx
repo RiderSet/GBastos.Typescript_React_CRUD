@@ -4,18 +4,16 @@ import {
    Button,
    IconButton,
    Tooltip } from "@mui/material";
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { Link } from "react-router-dom";
 import { ICategory } from "../../Interfaces/ICategory";
 import { MaterialReactTable } from 'material-react-table';
 import Edit from "@mui/icons-material/Edit";
 import Delete from "@mui/icons-material/Delete";
-import { CreateNewAccountModal } from "./createModal";
+import { CreateNewCategoryModal } from "./createModal";
+import httpModule from "../../crosscutting/api/client";
 
 export default function CategoriesGrid( {data}: ICategory[]) {
    const [createModalOpen, setCreateModalOpen] = useState(false);
-   const [tableData, setTableData] = useState(() => data);
+   const [tableData, setTableData] = useState<ICategory[]>(() => data);
    const [validationErrors, setValidationErrors] = useState({});
    
    const handleCreateNewRow = (values) => {
@@ -25,8 +23,7 @@ export default function CategoriesGrid( {data}: ICategory[]) {
 
     const handleSaveRowEdits = async ({ exitEditingMode, row, values }) => {
       if (!Object.keys(validationErrors).length) {
-        tableData[row.index] = values;
-        
+        tableData[row.index] = values;        
         setTableData([...tableData]);
         exitEditingMode(); 
       }
@@ -36,15 +33,18 @@ export default function CategoriesGrid( {data}: ICategory[]) {
       setValidationErrors({});
     };
 
-    const handleDeleteRow = useCallback(
+    const handleDeleteRow =  useCallback(
       (row) => {
         if (
-          !confirm(`Are you sure you want to delete ${row.getValue('firstName')}`)
+          !confirm(`Tem certeza de que quer excluir ${row.getValue('nome')}?`)
         ) {
           return;
         }
-        tableData.splice(row.index, 1);
+        httpModule
+        .delete("DeleteCategory/" + row.getValue('id'));
+        tableData.splice(row, 1);
         setTableData([...tableData]);
+        window.location.reload();
       },
       [tableData],
     );
@@ -57,24 +57,21 @@ export default function CategoriesGrid( {data}: ICategory[]) {
          accessorKey: "actionsEdit",
          header: "Edit",
          size: 90,
-         renderCell: () => (
-            <Link to="/edit" >
-               <EditIcon />
-            </Link>
-         ),
       },
       {
          accessorKey: "actionsDelete",
          header: "delete",
          size: 90,
-         renderCell: () => (
-            <Link to="/delete" >
-               <DeleteIcon />
-            </Link>
-         ),
       },
  ],
  [],
+);
+
+const columns2 = useMemo(
+   () => [
+   { accessorKey: "nome", header: "Descrição", size: 500 },
+],
+[],
 );
  
    return (
@@ -92,6 +89,7 @@ export default function CategoriesGrid( {data}: ICategory[]) {
         data={tableData}
         editingMode="modal" //default
         enableColumnOrdering
+        enableRowSelection
         enableEditing
         onEditingRowSave={handleSaveRowEdits}
         onEditingRowCancel={handleCancelRowEdits}
@@ -103,9 +101,9 @@ export default function CategoriesGrid( {data}: ICategory[]) {
               </IconButton>
             </Tooltip>
             <Tooltip arrow placement="right" title="Delete">
-              <IconButton color="error" onClick={() => handleDeleteRow(row)}>
-                <Delete />
-              </IconButton>
+                  <IconButton color="error" onClick={() => handleDeleteRow(row)} >
+                    <Delete />
+                  </IconButton>
             </Tooltip>
           </Box>
         )}
@@ -119,8 +117,8 @@ export default function CategoriesGrid( {data}: ICategory[]) {
           </Button>
         )}
       />
-      <CreateNewAccountModal
-        columns={columns}
+      <CreateNewCategoryModal
+        columns={columns2}
         open={createModalOpen}
         onClose={() => setCreateModalOpen(false)}
         onSubmit={handleCreateNewRow}
